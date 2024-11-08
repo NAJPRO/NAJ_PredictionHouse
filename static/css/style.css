@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:wght@300;400;500;700&display=swap');
+.roboto-light {
+  font-family: "Roboto", serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.roboto-regular {
+  font-family: "Roboto", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.roboto-medium {
+  font-family: "Roboto", serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.roboto-bold {
+  font-family: "Roboto", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+
+*{
+    padding: 0;
+    margin: 0;
+    outline: none;
+    box-sizing: border-box;
+    font-family: "Roboto", serif !important;
+    font-weight: 700 !important;
+    font-style: normal !important;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Montserrat", serif !important;
+    font-optical-sizing: auto !important; /* Cette propriété peut ne pas être supportée partout */
+    font-weight: 400 !important; /* Remplacez <weight> par un nombre valide, par exemple 400, 600, ou 700 */
+    font-style: normal !important;
+}
+body{
+    background-color: #fff;
+
+
+}
+
+#nav-bar{
+    display: flex;
+    padding: 20px;
+    justify-content: space-between;
+    box-shadow: 1px 0 2px rgb(0,0,0.005);
+    background-color: #fff;
+    position: static;
+
+}
+
+
+input:focus, select:focus{
+    box-shadow: none !important;
+    outline: none !important;
+    border: 2px solid #00ff62 !important;
+    
+}

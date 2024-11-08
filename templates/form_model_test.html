@@ -1,0 +1,128 @@
+
+{% extends 'master.html' %}
+
+{% block content %}
+    <div class="container mt-5 pt-5">
+        <h2>Estimation de la Valeur de votre Propriété</h2>
+        <form id="estimationForm">
+
+            <div class="form-group">
+                <label for="longitude">Longitude <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="longitude" name="longitude" required>
+            </div>
+            <div class="form-group">
+                <label for="latitude">Latitude <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="latitude" name="latitude" required>
+            </div>
+            <div class="form-group">
+                <label for="livingArea_m2">Valeur de la Surface Habitable <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="livingArea_m2" name="livingArea_m2" required>
+            </div>
+            <div class="form-group">
+                <label for="yearBuilt">Année de Construction <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="yearBuilt" name="yearBuilt" required>
+            </div>
+            <div class="form-group">
+                <label for="homeType">Type de Propriété <span class="text-danger">*</span></label>
+                <select class="form-control" id="homeType" name="homeType" required>
+                    <option value="">Sélectionnez...</option>
+                    {% for item in homeType %}
+                        <option value="{{ item }}">{{ item }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="city">Ville  <span class="text-danger">*</span></label>
+                <select class="form-control" id="city" name="city" required>
+                    <option value="">Sélectionnez...</option>
+                    {% for item in cities %}
+                        <option value="{{ item }}">{{ item }}</option>
+                    {% endfor %}
+      
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="bedrooms">Chambres <span class="text-danger">*</span></label>
+                <input type="number" class="form-control" id="bedrooms" name="bedrooms" required>
+            </div>
+            <div class="form-group">
+                <label for="bathrooms">Salles de Bain <span class="text-danger">*</span></label>
+                <input type="number" class="form-control" id="bathrooms" name="bathrooms" required>
+            </div>
+            <div class="form-group">
+                <label for="homeType">Code Postal<span class="text-danger">*</span></label>
+                <select class="form-control" id="homeType" name="zipcode" required>
+                    <option value="">Sélectionnez...</option>
+                    {% for item in zipcode %}
+                        <option value="{{ item }}">{{ item }}</option>
+                    {% endfor %}
+       
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="zipcode">Code Postal <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="zipcode" name="zipcode" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Estimer</button>
+        </form>
+
+        <div id="loadingMessage" class="mt-3" style="display: none;">
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            <span> Veuillez patienter un moment...</span>
+        </div>
+
+        <div id="result" class="mt-3"></div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script>
+        $(document).ready(function() {
+            $('#estimationForm').on('submit', function(event) {
+                event.preventDefault(); // Empêche le rechargement de la page
+
+                // Affiche le message de chargement
+                $('#loadingMessage').show();
+                $('#result').empty();
+
+                // Récupère les données du formulaire et les convertit en JSON
+                const formData = {
+                    longitude: $('#longitude').val(),
+                    latitude: $('#latitude').val(),
+                    livingArea_m2: $('#livingArea_m2').val(),
+                    yearBuilt: $('#yearBuilt').val(),
+                    homeType: $('#homeType').val(),
+                    city: $('#city').val(),
+                    bedrooms: $('#bedrooms').val(),
+                    bathrooms: $('#bathrooms').val(),
+                    zipcode: $('#zipcode').val()
+                };
+
+                const formatNumbre = (num) =>{
+                    return new Intl.NumberFormat('fr-FR', {
+                        minimumFractionDigits: 0,
+                        maximumFractionDigits: 3
+                    }).format(num)
+                }
+                // Envoie la requête AJAX en spécifiant que le contenu est JSON
+                $.ajax({
+                    type: 'POST',
+                    url: '/predict',
+                    contentType: 'application/json',  // Spécifiez que le contenu est JSON
+                    data: JSON.stringify(formData),    // Convertit les données en JSON
+                    success: function(response) {
+                        // Masque le message de chargement
+                        $('#loadingMessage').hide();
+
+                        // Affiche le résultat
+                        $('#result').html('<h4>Estimation: ' + formatNumbre(response.predict[0]) + ' $</h4>');
+                    },
+                    error: function() {
+                        $('#loadingMessage').hide();
+                        $('#result').html('<div class="alert alert-danger">Une erreur s\'est produite. Veuillez réessayer.</div>');
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}
