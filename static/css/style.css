@@ -64,3 +64,18 @@ input:focus, select:focus{
     border: 2px solid #00ff62 !important;
     
 }
+
+#sub-form{
+  box-shadow: none !important;
+  outline: none !important;
+  border: 2px solid #00ff62;
+  transition: ease-in-out 0.3s;
+}
+
+#sub-form:hover{
+  color: #000;
+  font-size: 18px;
+  letter-spacing: 0.15rem;
+  background-color: #00ff62;
+  border: none;
+}
