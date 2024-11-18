@@ -51,7 +51,7 @@
         <nav id="navmenu" class="navmenu">
             <ul>
                 <li><a href="{{url_for('home')}}" class="{{'active' if request.path == '/' else ''}}">Home</a></li>
-                <li><a href="{{url_for('about')}}" class="{{'active' if request.path == '/about' else ''}}">About</a></li>
+                <!-- <li><a href="{{url_for('about')}}" class="{{'active' if request.path == '/about' else ''}}">About</a></li> -->
                 <!-- <li><a href="{{url_for('back')}}">Agents</a></li> -->
                 <li ><a href="{{url_for('get_prediction_info')}}" class="{{'active' if request.path == '/predict' else ''}}">Tester Notre Model</a></li>
             </ul>

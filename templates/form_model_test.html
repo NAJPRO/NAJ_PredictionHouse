@@ -3,60 +3,18 @@
 
 {% block content %}
     <div class="container mt-5 pt-5">
-        <h2>Estimation de la Valeur de votre Propriété</h2>
-        <form id="estimationForm px-5">
+        <h2 style="color: green; font-weight:bold !important; margin-top: 20px;">Estimation de la Valeur de votre Propriété</h2>
+        <form id="estimationForm">
+            
             <div class="row my-4">
                 <div class="form-group col-md-6">
-                    <label for="longitude">Longitude (m&sup2)<span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="longitude" name="longitude" required>
-                </div>
-
-                <div class="form-group col-md-6">
-                    <label for="latitude">Latitude <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="latitude" name="latitude" required>
-                </div>
-            </div>
-            <div class="row my-4">
-                <div class="form-group col-md-6">
-                    <label for="livingArea_m2">Valeur de la Surface Habitable <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="livingArea_m2" name="livingArea_m2" required>
+                    <label for="livingArea">Valeur de la Surface Habitable <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="livingArea" name="livingArea" required>
                 </div>
 
                 <div class="form-group col-md-6">
                     <label for="yearBuilt">Année de Construction <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" id="yearBuilt" name="yearBuilt" required>
-                </div>
-            </div>
-            <div class="row my-4">
-                <div class="form-group col-md-4">
-                    <label for="homeType">Type de Propriété <span class="text-danger">*</span></label>
-                    <select class="form-control" id="homeType" name="homeType" required>
-                        <option value="">Sélectionnez...</option>
-                        {% for item in homeType %}
-                            <option value="{{ item }}">{{ item }}</option>
-                        {% endfor %}
-                    </select>
-                </div>
-                <div class="form-group col-md-4">
-                    <label for="city">Ville  <span class="text-danger">*</span></label>
-                    <select class="form-control" id="city" name="city" required>
-                        <option value="">Sélectionnez...</option>
-                        {% for item in cities %}
-                            <option value="{{ item }}">{{ item }}</option>
-                        {% endfor %}
-          
-                    </select>
-                </div>
-
-                <div class="form-group col-md-4">
-                    <label for="homeType">Code Postal<span class="text-danger">*</span></label>
-                    <select class="form-control" id="homeType" name="zipcode" required>
-                        <option value="">Sélectionnez...</option>
-                        {% for item in zipcode %}
-                            <option value="{{ item }}">{{ item }}</option>
-                        {% endfor %}
-           
-                    </select>
                 </div>
             </div>
             <div class="row my-4">
@@ -71,6 +29,52 @@
                 </div>
                
             </div>
+            <div class="row my-4">
+                <div class="form-group col-md-6">
+                    <label for="homeType">Type de Propriété <span class="text-danger">*</span></label>
+                    <select class="form-control" id="homeType" name="homeType" required>
+                        <option value="">Sélectionnez...</option>
+                        {% for item in homeType %}
+                            <option value="{{ item }}">{{ item }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="city">Ville  <span class="text-danger">*</span></label>
+                    <select class="form-control" id="city" name="city" required>
+                        <option value="">Sélectionnez...</option>
+                        {% for item in cities %}
+                            <option value="{{ item }}">{{ item }}</option>
+                        {% endfor %}
+          
+                    </select>
+                </div>
+
+            </div>
+            <div class="row my-4">
+
+                <div class="form-group col-md-6">
+                    <label for="county">Compté<span class="text-danger">*</span></label>
+                    <select class="form-control" id="county" name="county" required>
+                        <option value="">Sélectionnez...</option>
+                        {% for item in county %}
+                            <option value="{{ item }}">{{ item }}</option>
+                        {% endfor %}
+           
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="streetAddress">Rue<span class="text-danger">*</span></label>
+                    <select class="form-control" id="streetAddress" name="streetAddress" required>
+                        <option value="">Sélectionnez...</option>
+                        {% for item in streetAddress %}
+                            <option value="{{ item }}">{{ item }}</option>
+                        {% endfor %}
+           
+                    </select>
+                </div>
+            </div>
+           
             <div class="row d-flex justify-content-end">
                 <div class="form-group col-4">
                     <!-- <input type="submit" class="btn btn-ligth form-control" id="sub-form" value="Estimer"/> -->
@@ -91,25 +95,27 @@
 {% block script %}
     <script>
         $(document).ready(function() {
+            console.log("Hello world")
             $('#estimationForm').on('submit', function(event) {
                 event.preventDefault(); // Empêche le rechargement de la page
 
+                
                 // Affiche le message de chargement
                 $('#loadingMessage').show();
                 $('#result').empty();
 
                 // Récupère les données du formulaire et les convertit en JSON
                 const formData = {
-                    longitude: $('#longitude').val(),
-                    latitude: $('#latitude').val(),
-                    livingArea_m2: $('#livingArea_m2').val(),
                     yearBuilt: $('#yearBuilt').val(),
                     homeType: $('#homeType').val(),
+                    livingArea: $('#livingArea').val(),
                     city: $('#city').val(),
                     bedrooms: $('#bedrooms').val(),
                     bathrooms: $('#bathrooms').val(),
-                    zipcode: $('#zipcode').val()
+                    county: $('#county').val(),
+                    streetAddress: $('#streetAddress').val(),
                 };
+                console.log(formData)
 
                 const formatNumbre = (num) =>{
                     return new Intl.NumberFormat('fr-FR', {
