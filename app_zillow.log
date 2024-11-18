@@ -4129,3 +4129,4 @@
 2024-11-18 01:10:01,699 - INFO - 127.0.0.1 - - [18/Nov/2024 01:10:01] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
 2024-11-18 01:10:02,049 - INFO - 127.0.0.1 - - [18/Nov/2024 01:10:02] "[36mGET /static/img/favicon.png HTTP/1.1[0m" 304 -
 2024-11-18 01:49:18,698 - INFO -  * Detected change in 'D:\\Mes travaux (Audin)\\Python\\Real_Prediction\\main.py', reloading
+2024-11-18 01:49:23,775 - INFO -  * Restarting with stat
