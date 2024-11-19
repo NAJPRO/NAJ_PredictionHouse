@@ -1,0 +1,37 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "main.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/predict",
+      "methods": ["POST"],
+      "dest": "main.py"
+    },
+    {
+      "src": "/predict",
+      "methods": ["GET"],
+      "dest": "main.py"
+    },
+    {
+      "src": "/app",
+      "dest": "main.py"
+    },
+    {
+      "src": "/about",
+      "dest": "main.py"
+    },
+    {
+      "src": "/back",
+      "dest": "main.py"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "main.py"
+    }
+  ]
+}
