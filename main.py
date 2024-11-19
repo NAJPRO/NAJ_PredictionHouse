@@ -11,7 +11,7 @@ Bootstrap(app)
 data_test = Zillow()
 
 
-@app.route('/')
+@app.route('/app')
 def home():
     return render_template('index.html')
 
