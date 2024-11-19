@@ -11,7 +11,7 @@ Bootstrap(app)
 data_test = Zillow()
 
 
-@app.route('/app')
+@app.route('/')
 def home():
     return render_template('index.html')
 
@@ -50,6 +50,6 @@ def predict():
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(debug=True, host="https://naj-prediction-house.vercel.app")
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
