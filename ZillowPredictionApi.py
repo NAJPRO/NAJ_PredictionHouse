@@ -1,10 +1,8 @@
 # encoding=utf-8
-import pickle
 import logging
-import pandas as pd
+
 import joblib
-from flask import request, jsonify, Flask
-import datetime
+import pandas as pd
 
 logging.basicConfig(level=logging.DEBUG, filename="app_zillow.log"
                     , filemode="a",

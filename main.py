@@ -1,7 +1,8 @@
-import numpy as np
 from flask import Flask, request, jsonify
-from flask import render_template, session, redirect
+from flask import Flask, request, jsonify
+from flask import render_template, redirect
 from flask_bootstrap import Bootstrap
+
 from ZillowPredictionApi import ZillowPredictionApi as Zillow
 
 app = Flask(__name__)
@@ -50,6 +51,6 @@ def predict():
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    app.run(debug=True, host="https://naj-prediction-house.vercel.app")
+    app.run(debug=True)
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
