@@ -1,6 +1,7 @@
 # ZillowPrediction : Application de Prédiction des Prix Immobiliers
 
 Cette application Flask permet d'estimer la valeur d'une propriété en utilisant un modèle de prédiction basé sur des données immobilières. Les utilisateurs peuvent entrer diverses caractéristiques de la propriété, et l'application renvoie une estimation du prix.
+La dataset, le model et le fichier jupyter sont contenu dans le dossier model.
 
 ## Fonctionnalités
 
