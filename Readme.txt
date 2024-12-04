@@ -10,7 +10,7 @@ Cette application Flask permet d'estimer la valeur d'une propriété en utilisan
   - Nombre de chambres
   - Nombre de salles de bain
   - Type de propriété
-  - Ville, compté et adresse
+  - Ville, comté et adresse
 - Interface utilisateur conviviale avec des formulaires simples
 - Traitement des requêtes en temps réel grâce à AJAX
 - Affichage des résultats de manière claire et lisible
@@ -37,20 +37,23 @@ Avant de commencer, assurez-vous d'avoir installé Python 3 et pip (le gestionna
    cd NAJ_PredictionHouse
 
 2. **Créez un nouvel environnement virtuel :**
-    ```bash
-    python -m venv venv
+
+   ```bash
+   python -m venv venv
 
 3. **Activez l'environnement virtuel :**
-  . Sur Windows
-  ```bash
-    venv\Scripts\activate
-  . Sur macOS/Linux :
-  ```bash
-    source venv/bin/activate
+   - Sur Windows :
+     ```bash
+     venv\Scripts\activate
+     ```
+   - Sur macOS/Linux :
+     ```bash
+     source venv/bin/activate
+     ```
 
-4.  **Installez les dépendances :**
-  ```bash
-    pip install -r requirements.txt
+4. **Installez les dépendances :**
+   ```bash
+   pip install -r requirements.txt
 
 
 # Utilisation
@@ -63,8 +66,8 @@ Avant de commencer, assurez-vous d'avoir installé Python 3 et pip (le gestionna
     Ouvrez votre navigateur et allez à http://127.0.0.1:5000
 
 3. **Remplissez le formulaire :**
-   . Entrez les détails de la propriété dans le formulaire.
-   . Cliquez sur le bouton "Estimer" pour obtenir une estimation du prix.
+   - Entrez les détails de la propriété dans le formulaire.
+   - Cliquez sur le bouton "Estimer" pour obtenir une estimation du prix.
 
 4. **Visualisez les résultats :**
     L'estimation du prix s'affichera sous le formulaire après quelques instants.
